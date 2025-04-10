@@ -29,11 +29,7 @@ A modelação  do banco de dados foi feita à partir da definição das entidade
 
 • Tabelas:
 
-roleta ▪ roleta_id (Chave Primária).
-
-▪ Empresa ▪ empresa_id (Chave Primária) ▪ nome ▪ empreendimento ▪ data_sorteio ▪ periodo.
-
-▪ Administrador ▪ admin_id (Chave Primária) nome ▪ email ▪ senha ▪ empresa_id (Chave Estrangeira referenciando a tabela empresa). 
+▪ Empresa ▪ empresa_id (Chave Primária) ▪ nome ▪ empreendimento ▪ data_sorteio ▪ periodo. 
 
 ▪ Sorteio ▪ sorteio_id ▪ (Chave Primária) ▪ empresa_id ▪ administrador_id (Chaves Estrangeiras referenciando as tabelas empresa e administrador) ▪ data da criação ▪ finalizado.
 
@@ -55,13 +51,14 @@ roleta ▪ roleta_id (Chave Primária).
 <img src="normalizacao-livre-atualizada.png" width=1000 height=80>
 
 ## 1 Normalização
-<img src="primeira-normalizacao.png" width=1000 height=80>
+<img src="primeira-normalizacao-atualizada.png" width=1000 height=80>
 
 
 ## 2 Normalização
-<img src="segunda-normalizacao.png" width=1000 height=80>
+<img src="segunda-normalizacao-atualizada.png" width=1000 height=80>
 
 ## 3 Normalização
+<img src=".png" width=1000 height=80>
 
 # MODELO FISICO - Banco de dados
 ### Código escrito em sql

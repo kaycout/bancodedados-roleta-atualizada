@@ -1,0 +1,43 @@
+/* Container principal - estilo compatível com index */
+#aguardando-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+#mensagem-aguardando {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#mensagem-aguardando h3 {
+    color: #0a000a;
+    font-weight: 500;
+}
+
+#quadrado-status {
+    width: 150px;
+    height: 150px;
+    background-color: #0d6efd;
+    margin: 0 auto;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #aguardando-container { padding: 20px; }
+    #quadrado-status { width: 120px; height: 120px; }
+}
+
+@media (max-width: 480px) {
+    #aguardando-container { padding: 15px; }
+    #quadrado-status { width: 100px; height: 100px; }
+}

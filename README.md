@@ -26,7 +26,7 @@ Definição das entidades do banco de dados.
 
 ## MODELAGEM BANCO DE DADOS
 
-A modelação  do banco de dados foi feita à partir da definição das entidades, pensando nisso, foi realizado o modelo lógico juntamente com as normalizações, sendo eles todos os atributos necessários para o banco de dados.
+A modelagem do banco de dados foi feita à partir da definição das entidades, pensando nisso, foi realizado o modelo lógico juntamente com as normalizações, sendo eles todos os atributos necessários para o banco de dados.
 
 # Especificação dos elementos usados no banco de dados.
 
@@ -73,7 +73,6 @@ A modelação  do banco de dados foi feita à partir da definição das entidade
 ### Código escrito em sql
 
 ```sql create database roletadb; use roletadb;
--- criação do banco de dados
 -- criação do banco de dados
 create database roletadb;
 

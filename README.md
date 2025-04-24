@@ -7,13 +7,16 @@
 • Logo em seguida, para a estrutura do banco de dados da roleta, foi pensado e definido algumas das identidades principais, sendo elas;
 1. Empresa
 2. Participante
-3. Sorteio
-4. Resultado
-5. QRCode
-6. Publicidade - Para anúncios que serão exibidos no site.
-7. Arquivos
-8. Configuração do sorteio - Caso haja alguma alteração da roleta.
-9.	Caso haja necessidade – Configurações do Sorteio (para futuras personalizações e novas animações) essa entidade ajuda.
+3. Participante Mobile
+4. Participante sorteio
+5. Sorteio
+6. Resultado
+7. Uploads
+8. QRCode
+9. Publicidade - Para anúncios que serão exibidos no site.
+10. Arquivos
+11. Configuração do sorteio - Caso haja alguma alteração da roleta.
+12.	Caso haja necessidade – Configurações do Sorteio (para futuras personalizações e novas animações) essa entidade ajuda.
 
 
 # Modelo Conceitual
@@ -34,6 +37,12 @@ A modelação  do banco de dados foi feita à partir da definição das entidade
 ▪ Sorteio ▪ sorteio_id ▪ (Chave Primária) ▪ empresa_id ▪ administrador_id (Chaves Estrangeiras referenciando as tabelas empresa e administrador) ▪ data da criação ▪ finalizado.
 
 ▪ Participante ▪ participante_id ▪ (Chave Primária) ▪ sorteio_id (Chave Estrangeira referenciando a tabela sorteio) ▪ nome ▪ equipe ▪ Supervisão ▪ via_qr.
+
+▪ Participante Mobile ▪ id_participante_mobile (Chave Primária)  ▪ nome  ▪ email  ▪ senha.
+
+▪ Participante Sorteio  ▪ id  ▪ sorteio_id  ▪ participante-id.
+
+▪ Uploads ▪ id int auto_increment primary key  ▪ sorteio_id ▪ nome_arquivo  ▪ caminho_arquivo  ▪ tipo_arquivo  ▪ data_upload  ▪ (Chave Estrangeira) foreign key(id_sorteio) references sorteio(id).
 
 ▪ Resultado ▪ resultado-id ▪ (Chave Primária) ▪ sorteio_id ▪ participante-id ▪ (Chave Estrangeira referenciando as tabelas sorteio e participante) ▪ posicao. 
 
@@ -65,6 +74,7 @@ A modelação  do banco de dados foi feita à partir da definição das entidade
 
 ```sql create database roletadb; use roletadb;
 -- criação do banco de dados
+-- criação do banco de dados
 create database roletadb;
 
 -- seleciona o banco de dados
@@ -81,7 +91,7 @@ create table empresa (
 
 -- tabela de sorteios
 create table sorteio (
-    id_sorteio int auto_increment primary key,
+    id int auto_increment primary key,
     id_empresa int not null,
     nome_responsavel varchar(255) not null,
     email_responsavel varchar(255) unique not null,
@@ -91,7 +101,7 @@ create table sorteio (
     finalizado boolean default false
 );
 
--- tabela de participantes
+-- tabela de participante
 create table participante (
     id_participante int auto_increment primary key,
     nome varchar(255) not null,
@@ -101,6 +111,29 @@ create table participante (
     via_qr boolean default false,
     unique(id_sorteio, nome)
 );
+
+CREATE TABLE participante_sorteio(
+    id int auto_increment primary key,
+    id_sorteio int not null,
+    id_participante int not null
+);
+
+create table participante_mobile(
+    id_participante_mobile int auto_increment primary key,
+    nome varchar(255) not null,
+    email varchar(255) not null,
+    senha varchar(255) unique not null
+);
+
+create table uploads(
+     id int auto_increment primary key,           -- Identificador único para o upload
+     id_sorteio int,                              -- Relacionamento com o sorteio, ou outra tabela relevante
+     nome_arquivo varchar(255) not null,          -- Nome do arquivo
+     caminho_arquivo varchar(255) not null,        -- Caminho onde o arquivo foi armazenado no servidor
+     tipo_arquivo varchar(50),                    -- Tipo do arquivo (ex: PDF, CSV, XLSX, etc.)
+     data_upload timestamp default current_timestamp,  -- Data e hora do upload
+     foreign key(id_sorteio) references sorteio(id)  -- Caso haja uma tabela de sorteios, você pode referenciar aqui
+ );
 
 -- tabela de resultados
 create table resultado (
@@ -145,25 +178,36 @@ create table configuracoes_sorteio (
 
 
 -- adicionando chaves estrangeiras separadamente
-
 alter table sorteio
     add foreign key (id_empresa) references empresa(id_empresa) on delete cascade;
 
 alter table participante
-    add foreign key (id_sorteio) references sorteio(id_sorteio) on delete cascade;
+    add foreign key (id_sorteio) references sorteio(id) on delete cascade;
+
+alter table participante_sorteio
+    add foreign key (id_sorteio) references sorteio(id) on delete cascade,
+    add foreign key (id_participante) references participante_mobile(id_participante_mobile) on delete cascade;
 
 alter table resultado
-    add foreign key (id_sorteio) references sorteio(id_sorteio) on delete cascade,
+    add foreign key (id_sorteio) references sorteio(id) on delete cascade,
     add foreign key (id_participante) references participante(id_participante) on delete cascade;
 
 alter table qrcode
-    add foreign key (id_sorteio) references sorteio(id_sorteio) on delete cascade;
+    add foreign key (id_sorteio) references sorteio(id) on delete cascade;
 
 alter table arquivos
-    add foreign key (id_sorteio) references sorteio(id_sorteio) on delete cascade;
+    add foreign key (id_sorteio) references sorteio(id) on delete cascade;
+
+alter table uploads
+    add foreign key (id_sorteio) references sorteio(id) on delete cascade;
 
 alter table configuracoes_sorteio
-    add foreign key (id_sorteio) references sorteio(id_sorteio) on delete cascade;
+    add foreign key (id_sorteio) references sorteio(id) on delete cascade;
+
+
+alter table sorteio
+    add column id_empresa int not null;
+
 
 
 -- alter table qrcode
@@ -173,7 +217,7 @@ alter table configuracoes_sorteio
 ## Modelo de Entidade Relacional
 
 #### Diagrama do relacionamento - ROLETA
-<img src="diagrama-de-relacionamento-roleta.png" width=1000>
+<img src="diagrama-de-relacionamento-roleta-atualizada.png" width=1000>
 
 
 

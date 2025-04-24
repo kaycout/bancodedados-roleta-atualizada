@@ -22,7 +22,7 @@
 # Modelo Conceitual
 Definição das entidades do banco de dados.
 
-<img src="modelo-conceitual-roleta.png" width=1000>
+<img src="modelo-conceitual-roleta-atualizada.png" width=1000>
 
 ## MODELAGEM BANCO DE DADOS
 

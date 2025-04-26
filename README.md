@@ -64,7 +64,7 @@ A modelagem do banco de dados foi feita à partir da definição das entidades, 
 
 
 ## 2 Normalização
-<img src="segunda-normalizacao-atualizada.png2.0" width=1000 height=80>
+<img src="segunda-normalizacao-atualizada2.0.png" width=1000 height=80>
 
 ## 3 Normalização
 <img src=".png" width=1000 height=80>

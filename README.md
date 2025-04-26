@@ -57,14 +57,14 @@ A modelagem do banco de dados foi feita à partir da definição das entidades, 
 
 
 # Modelo Lógico com as normalizações
-<img src="normalizacao-livre-atualizada.png" width=1000 height=80>
+<img src="normalizacao-livre-atualizada2.0.png" width=1000 height=80>
 
 ## 1 Normalização
-<img src="primeira-normalizacao-atualizada.png" width=1000 height=80>
+<img src="primeira-normalizacao-atualizada2.0.png" width=1000 height=80>
 
 
 ## 2 Normalização
-<img src="segunda-normalizacao-atualizada.png" width=1000 height=80>
+<img src="segunda-normalizacao-atualizada.png2.0" width=1000 height=80>
 
 ## 3 Normalização
 <img src=".png" width=1000 height=80>

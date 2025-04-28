@@ -67,7 +67,14 @@ A modelagem do banco de dados foi feita à partir da definição das entidades, 
 <img src="segunda-normalizacao-atualizada2.0.png" width=1000 height=80>
 
 ## 3 Normalização
-<img src=".png" width=1000 height=80>
+<img src="terceira-normalizacao1.png" width=1000 height=80>
+
+## 3 Normalização
+<img src="terceira-normalizacao2.png" width=1000 height=80>
+
+ ## 3 Normalização
+<img src="terceira-normalizacao3.png" width=1000 height=80>
+
 
 # MODELO FISICO - Banco de dados
 ### Código escrito em sql

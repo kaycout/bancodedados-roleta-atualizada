@@ -38,7 +38,7 @@ A modelagem do banco de dados foi feita à partir da definição das entidades, 
 
 ▪ Participante ▪ participante_id ▪ (Chave Primária) ▪ sorteio_id (Chave Estrangeira referenciando a tabela sorteio) ▪ nome ▪ equipe ▪ Supervisão ▪ via_qr.
 
-▪ Participante Mobile ▪ id_participante_mobile (Chave Primária)  ▪ nome  ▪ email  ▪ senha.
+▪ Participante Mobile ▪ id_participante_mobile (Chave Primária)  ▪ nome  ▪ equipe  ▪ supervisao.
 
 ▪ Participante Sorteio  ▪ id  ▪ sorteio_id  ▪ participante-id.
 
@@ -127,8 +127,8 @@ CREATE TABLE participante_sorteio(
 create table participante_mobile(
     id_participante_mobile int auto_increment primary key,
     nome varchar(255) not null,
-    email varchar(255) not null,
-    senha varchar(255) unique not null
+    equipe varchar(255) not null,
+    supervisao varchar(255) unique not null
 );
 
 create table uploads(

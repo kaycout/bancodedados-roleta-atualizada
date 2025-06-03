@@ -223,7 +223,7 @@ alter table sorteio
 ## Modelo de Entidade Relacional
 
 #### Diagrama do relacionamento - ROLETA
-<img src="diagrama-de-relacionamento-roleta-atualizada.png" width=1000>
+<img src="modelo-relacional-atualizado2.0.png" width=1000>
 
 
 
